@@ -11,4 +11,7 @@ def create_app():
     from .attendance_module import attendance
     app.register_blueprint(attendance.attendancebp)
 
+    from .auth_module import auth
+    app.register_blueprint(auth.authbp)
+
     return app

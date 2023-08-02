@@ -20,7 +20,7 @@ class AttendanceForm(FlaskForm):
 
 
 
-@attendancebp.route('/', methods=['GET', 'POST'])
+@attendancebp.route('/attendance', methods=['GET', 'POST'])
 def index():
     form = AttendanceForm()
 
