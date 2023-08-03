@@ -1,20 +1,25 @@
-<html>
-    <head><title>Attendance Form</title></head>
-    <body>
-        <form action="" method="post" role="form">
-            {{ form.hidden_tag() }}
-            {{ form.name.label }} {{ form.name() }}
-            <br>
-            <input type="submit" name="add_entry" value="Add Entry" id = "add_entry">
-            <input type="submit" name="delete_entry" value="Delete Entry" id = "delete_entry">
-            {% for entry in form.entries %}
-                <p>
-                {{ entry.tutorname.label }} {{ entry.tutorname() }}
-                {{ entry.hours.label }} {{ entry.hours() }}
-                {{ entry.hidden_tag() }}
-                </p>
-            {% endfor %}
-            {{ form.submit() }}
-        </form>
-    </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Form</title>
+</head>
+<body>
+    <form action="" method="post" role="form">
+        {{ form.hidden_tag() }}
+        {{ form.name.label }} {{ form.name() }}
+        <br>
+        <input type="submit" name="add_entry" value="Add Entry" id = "add_entry">
+        <input type="submit" name="delete_entry" value="Delete Entry" id = "delete_entry">
+        {% for entry in form.entries %}
+            <p>
+            {{ entry.tutorname.label }} {{ entry.tutorname() }}
+            {{ entry.hours.label }} {{ entry.hours() }}
+            {{ entry.hidden_tag() }}
+            </p>
+        {% endfor %}
+        {{ form.submit() }}
+    </form>
+</body>
 </html>
