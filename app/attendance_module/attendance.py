@@ -3,6 +3,7 @@ from flask import Blueprint, flash, g, redirect, render_template, request, sessi
 from flask_wtf import FlaskForm
 from wtforms import FieldList, FormField, StringField, SubmitField, SelectField
 from wtforms.validators import InputRequired
+import flask_login
 
 attendancebp = Blueprint('attendance', __name__)
 
@@ -21,7 +22,8 @@ class AttendanceForm(FlaskForm):
 
 
 @attendancebp.route('/attendance', methods=['GET', 'POST'])
-def index():
+@flask_login.login_required
+def attendance():
     form = AttendanceForm()
 
     if form.add_entry.data:  #if submitted via add entry
