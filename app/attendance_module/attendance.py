@@ -10,7 +10,7 @@ attendancebp = Blueprint('attendance', __name__)
 #single attendance entry
 class HourForm(FlaskForm):
     tutorname = StringField('Name')
-    hours = SelectField('Hours', choices = [(0, 0), (1, 1), (2, 2)])  #value label pairs
+    hours = SelectField('Hours', choices = [(0, 0), (0.5, 0.5), (1, 1), (1.5, 1.5), (2, 2)])  #value label pairs
 
 class AttendanceForm(FlaskForm):
     name = StringField('Overseer Name', validators=[InputRequired()])
@@ -31,6 +31,7 @@ def attendance():
     elif form.delete_entry.data:
         form.entries.pop_entry()
     elif form.validate_on_submit():
-        for entry in form.entries.data:
-            print(entry)
+        #for entry in form.entries.data:
+        #    print(entry)
+        print(form.entries.data)
     return render_template("attendance.html" ,form=form)
