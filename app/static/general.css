@@ -23,7 +23,9 @@
   }
 
 
-  .block1{
-    width: 100px;
-    height: 100px;
+  .block{
+    padding
+    width: 90%;
+    height: 700px;
+    background-color: black;
   }
