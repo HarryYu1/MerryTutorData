@@ -24,8 +24,20 @@
 
 
   .block{
-   
     width: 90% ;
     height: 700px;
-    background-color: black;
+    background-color: rebeccapurple;
+  }
+
+  #half-block{
+    padding-top:5%;
+    padding-left: 5%;
+    align-items: center;
+  }
+
+  #checklist{
+    height: 550px;
+    width: auto;
+    padding-top: 5%;
+    padding-left: 6%;
   }
