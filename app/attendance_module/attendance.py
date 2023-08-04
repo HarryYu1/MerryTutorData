@@ -1,7 +1,7 @@
 from flask import Flask, render_template_string
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from flask_wtf import FlaskForm
-from wtforms import FieldList, FormField, StringField, SubmitField, SelectField
+from wtforms import FieldList, FormField, StringField, SubmitField, SelectField, DateField
 from wtforms.validators import InputRequired
 import flask_login
 
@@ -14,6 +14,7 @@ class HourForm(FlaskForm):
 
 class AttendanceForm(FlaskForm):
     name = StringField('Overseer Name', validators=[InputRequired()])
+    date = DateField('Today\'s Date:', validators = [InputRequired()])
     add_entry = SubmitField('Add Entry')
     delete_entry = SubmitField('Delete Entry')
     entries = FieldList(FormField(HourForm), min_entries=1)
