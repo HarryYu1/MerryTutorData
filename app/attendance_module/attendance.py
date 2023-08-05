@@ -1,9 +1,10 @@
 from flask import Flask, render_template_string
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from flask_wtf import FlaskForm
-from wtforms import FieldList, FormField, StringField, SubmitField, SelectField, DateField
+from wtforms import FieldList, FormField, StringField, SubmitField, SelectField, DateField, TextAreaField
 from wtforms.validators import InputRequired
 import flask_login
+from . import attendance_form_handler
 
 attendancebp = Blueprint('attendance', __name__)
 
@@ -14,10 +15,11 @@ class HourForm(FlaskForm):
 
 class AttendanceForm(FlaskForm):
     name = StringField('Overseer Name', validators=[InputRequired()])
-    date = DateField('Today\'s Date:', validators = [InputRequired()])
+    date = DateField('Date Of Session:', validators = [InputRequired()])
     add_entry = SubmitField('Add Entry')
     delete_entry = SubmitField('Delete Entry')
     entries = FieldList(FormField(HourForm), min_entries=1)
+    optional_comment = TextAreaField('Additional Comments:', render_kw={"rows": 5, "cols": 20})
     submit = SubmitField('Save')
 
 
@@ -34,5 +36,9 @@ def attendance():
     elif form.validate_on_submit():
         #for entry in form.entries.data:
         #    print(entry)
-        print(form.entries.data)
+        attendance_form_handler.handle_attendance(name = form.name.data, date = form.date.data, entries = form.entries.data)
+        if form.optional_comment.data:
+            print(form.optional_comment.data)
+
+        #now redirect to landing or something
     return render_template("attendance.html" ,form=form)

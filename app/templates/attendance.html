@@ -21,15 +21,11 @@
             {{ entry.hidden_tag() }}
             </p>
         {% endfor %}
+        {{ form.optional_comment.label }} <br>
+        {{ form.optional_comment() }} <br>
         {{ form.submit() }}
-        <button onclick="goBack()">Back</button>
-
-<script>
-function goBack() {
-  window.history.back();
-}
-</script>
-
-
+        <button onclick= "window.location.href='/login'">
+            Back
+        </button>
 </body>
 </html>
