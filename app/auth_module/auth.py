@@ -47,7 +47,7 @@ def login():
         user = User()
         user.id = username
         flask_login.login_user(user)
-        return flask.redirect('/attendance')  #TODO landing page redirect
+        return flask.redirect('/landing_page') 
     
     return flask.redirect('/login')
 
