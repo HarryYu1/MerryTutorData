@@ -36,11 +36,17 @@ p, div {
     width: 90% ;
     height: 650px;
     width: 650px;
-    background-color: #ffffe0;
+    background-color: whitesmoke;
+    border: 2px 2px 2px 2px rounded black;
+    
+    text-decoration: none;
+
   }
   .block:hover{
-    background-color: #800000;
-    transition: ease 1000ms;
+    border-radius: 50%;
+    background-color: #FFFDD0;
+    transition: ease   1000ms;
+    color: #0e1c36;
   }
 
   #half-block{
