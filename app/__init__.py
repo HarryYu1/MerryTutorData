@@ -17,6 +17,9 @@ def create_app():
     from .auth_module import auth
     app.register_blueprint(auth.authbp)
 
+    from .landing_module import landing
+    app.register_blueprint(landing.landingbp)
+
     from .attendance_module import attendance
     app.register_blueprint(attendance.attendancebp)
 
