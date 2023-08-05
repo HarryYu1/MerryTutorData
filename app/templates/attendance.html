@@ -6,21 +6,38 @@
     <link href="../static/general.css"   rel="stylesheet" type="text/css"/>
     <title>Attendance Form</title>
 </head>
-<body>
-    <form action="" method="post" role="form">
+<body style ="
+background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge.png');
+  overflow-x: hidden;">
+    <div id="display_contents">
+    <form action="" method="post" role="form" id="form_attendance" style="padding: 100px;">
+        <div>
         {{ form.hidden_tag() }}
+        <br>
+        <br>
         {{ form.name.label }} {{ form.name() }}
         <br>
-        {{ form.date.label }} {{ form.date() }}
+
         <br>
-        <input type="submit" name="add_entry" value="Add Entry" id = "add_entry">
+        
+        {{ form.date.label }} {{ form.date() }}
+        </div>
+  
+
+        <br>
+         <input type="submit" name="add_entry" value="Add Entry" id = "add_entry">
         <input type="submit" name="delete_entry" value="Delete Entry" id = "delete_entry">
+        <br>
+        
+        <br>
         {% for entry in form.entries %}
-            <p>
+            <p style="width: 600px;">
             {{ entry.tutorname.label }} {{ entry.tutorname() }}
             {{ entry.hours.label }} {{ entry.hours() }}
             {{ entry.hidden_tag() }}
             </p>
+            <br>
+         
         {% endfor %}
         {{ form.optional_comment.label }} <br>
         {{ form.optional_comment() }} <br>
@@ -28,5 +45,6 @@
         <button onclick= "window.location.href='/landing_page'">
             Back
         </button>
+    </div>
 </body>
 </html>

@@ -90,3 +90,9 @@ img{
 h1{
   padding-top: 8%;
 }
+
+#display_contents{
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
