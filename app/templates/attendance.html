@@ -10,6 +10,8 @@
         {{ form.hidden_tag() }}
         {{ form.name.label }} {{ form.name() }}
         <br>
+        {{ form.date.label }} {{ form.date() }}
+        <br>
         <input type="submit" name="add_entry" value="Add Entry" id = "add_entry">
         <input type="submit" name="delete_entry" value="Delete Entry" id = "delete_entry">
         {% for entry in form.entries %}
@@ -20,6 +22,14 @@
             </p>
         {% endfor %}
         {{ form.submit() }}
-    </form>
+        <button onclick="goBack()">Back</button>
+
+<script>
+function goBack() {
+  window.history.back();
+}
+</script>
+
+
 </body>
 </html>
