@@ -44,7 +44,7 @@ p, div {
   }
   .block:hover{
     border-radius: 50%;
-    background-color: #FFFDD0;
+    background-color: #FF7F50;
     transition: ease   1000ms;
     color: #0e1c36;
   }
@@ -83,6 +83,8 @@ p, div {
 
 img{
   padding-top: 6%;
+
+
 }
 
 h1{
