@@ -41,9 +41,12 @@ def attendance():
     elif form.validate_on_submit():
         #for entry in form.entries.data:
         #    print(entry)
-        attendance_form_handler.handle_attendance(name = form.name.data, date = form.date.data, entries = form.entries.data)
+        attendance_form_handler.handle_attendance(name = form.name.data, date = form.date.data, entries = form.entries.data)  #add error handling with return value
+        #    redirect to error page
         if form.optional_comment.data:
-            print(form.optional_comment.data)
+            print(form.optional_comment.data) #TODO: add the same error handling as above.
+
+        return redirect('/landing_page')
 
         #now redirect to landing or something
     return render_template("attendance.html" ,form=form)
