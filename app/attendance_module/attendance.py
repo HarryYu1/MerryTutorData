@@ -14,12 +14,13 @@ class HourForm(FlaskForm):
     hours = SelectField('Hours', choices = [(0, 0), (0.5, 0.5), (1, 1), (1.5, 1.5), (2, 2)])  #value label pairs
 
 class AttendanceForm(FlaskForm):
-    name = StringField('Overseer Name', validators=[InputRequired()])
-    date = DateField('Date Of Session:', validators = [InputRequired()])
+    name = StringField('Overseer Name')
+    date = DateField('Date Of Session:')
     add_entry = SubmitField('Add Entry')
     delete_entry = SubmitField('Delete Entry')
     entries = FieldList(FormField(HourForm), min_entries=1)
     optional_comment = TextAreaField('Additional Comments:', render_kw={"rows": 5, "cols": 20})
+    redirect_landing = SubmitField('Back')
     submit = SubmitField('Save')
 
 
@@ -33,6 +34,10 @@ def attendance():
       form.entries.append_entry(None)
     elif form.delete_entry.data:
         form.entries.pop_entry()
+
+    elif form.redirect_landing.data:
+        return redirect("/landing_page")
+
     elif form.validate_on_submit():
         #for entry in form.entries.data:
         #    print(entry)
