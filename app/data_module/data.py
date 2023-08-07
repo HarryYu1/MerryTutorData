@@ -8,7 +8,12 @@ import flask_login
 databp = Blueprint('data', __name__)
 
 class QueryForm(FlaskForm):
-    function = SelectField('Function', choices = [('trend','Trend'), ('sum','Sum')], validators = [InputRequired()]) #value label pairs
+    table = SelectField('Table To Query:', choices = [('attendance', 'Attendance'), ('attendance_comments', 'Attendance Comments'), ('sessions', 'Session Summaries')], 
+                        validators=[InputRequired()], default = 'attendance', render_kw={'onchange': "changeTable()"})
+    
+    attendance_function = SelectField('Function:', choices = [('graph','Graph'), ('sum','Sum'), ('query', 'General Query')]) #value label pairs
+    attendance_comments_function = SelectField('Function:', choices = [('bayes', 'Naive Bayes'), ('query', 'General Query')])
+    sessions_function = SelectField('Function:', choices = [('location', 'Location Distribution'), ('graph', 'Graph'), ('query', 'General Query')])
     #super annoying toggle checkbox
     toggle_range = BooleanField('Query Range:', render_kw={'onchange': "toggleRange()"})
     singledate = DateField('Date To Query:')
@@ -22,10 +27,9 @@ class QueryForm(FlaskForm):
 def render_data_form():
     form = QueryForm()
 
-    if form.validate_on_submit():
-        print(form.function.data)
-        print(form.end_date.data)
-
+    #TODO add a bunch of validation here
+    if request.method == 'POST': 
+        print(form.table.data)
         return redirect('/landing_page')
 
     return render_template("dataform.html" ,form=form)

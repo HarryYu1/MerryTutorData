@@ -6,7 +6,18 @@
 </head>
 <body>
     <form action="" method="post" role="form" id="form_attendance" style="padding: 100px;">
-        {{ form.function.label }} {{ form.function() }} <br>
+        {{ form.table.label}} {{ form.table() }} <br>
+      
+        <div id = "attendance_func">
+        {{ form.attendance_function.label }} {{ form.attendance_function() }} <br>
+        </div>
+        <div id = "attendance_comments_func" style = "display: none">
+          {{ form.attendance_comments_function.label }} {{ form.attendance_comments_function() }} <br>
+        </div>
+        <div id = "sessions_func" style = "display: none">
+          {{ form.sessions_function.label }} {{ form.sessions_function() }} <br>
+        </div>
+        
         {{ form.toggle_range.label }} {{ form.toggle_range() }} <br>
         <div id = "oneDate">
             {{ form.singledate.label }} {{ form.singledate() }} <br>
@@ -20,6 +31,7 @@
         {{ form.submit() }}
 
 <script>
+        //function for toggling whether to query one date or a range
         function toggleRange() {
           let is_checked = document.getElementById('toggle_range').checked;
           if (is_checked) {
@@ -30,6 +42,24 @@
             document.getElementById("dateRange").style.display = "none"
           }
         }
+
+        //function for if you change the table, turns specific fields on and off
+        function changeTable() {
+          let table_value = document.getElementById("table").value;
+          if (table_value === "attendance") {
+            document.getElementById("attendance_func").style.display = "initial"
+            document.getElementById("attendance_comments_func").style.display = "none"
+            document.getElementById("sessions_func").style.display = "none"
+          } else if (table_value === "attendance_comments") {
+            document.getElementById("attendance_func").style.display = "none"
+            document.getElementById("attendance_comments_func").style.display = "initial"
+            document.getElementById("sessions_func").style.display = "none"
+          } else if (table_value === "sessions") {
+            document.getElementById("attendance_func").style.display = "none"
+            document.getElementById("attendance_comments_func").style.display = "none"
+            document.getElementById("sessions_func").style.display = "initial"
+          }
+}
 </script>
 </body>
 </html>

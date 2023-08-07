@@ -14,8 +14,8 @@ class HourForm(FlaskForm):
     hours = SelectField('Hours', choices = [(0, 0), (0.5, 0.5), (1, 1), (1.5, 1.5), (2, 2)])  #value label pairs
 
 class AttendanceForm(FlaskForm):
-    name = StringField('Overseer Name')
-    date = DateField('Date Of Session:')
+    name = StringField('Overseer Name', validators=[InputRequired()])
+    date = DateField('Date Of Session:', validators=[InputRequired()])
     add_entry = SubmitField('Add Entry')
     delete_entry = SubmitField('Delete Entry')
     entries = FieldList(FormField(HourForm), min_entries=1)
