@@ -1,0 +1,37 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Attendance Form</title>
+</head>
+<body>
+    <form action="" method="post" role="form" id="form_attendance" style="padding: 100px;">
+        {{ form.function.label }} {{ form.function() }} <br>
+        {{ form.toggle_range.label }} {{ form.toggle_range() }} <br>
+        {{ form.singledate.label }} {{ form.singledate() }} <br>
+        <div id="dateRange" style="display: none">
+            {{ form.start_date.label }} {{ form.start_date() }} <br>
+            {{ form.end_date.label }} {{ form.end_date() }} <br>
+        </div>
+        {{ form.tutor.label }} {{ form.tutor() }} <br>
+        {{ form.submit() }}
+
+<script>
+        function toggleRange() {
+          let is_checked = document.getElementById('toggle_range').checked;
+          if (is_checked) {
+            document.getElementById("singledate").style.display = "none"
+            document.getElementById("dateRange").style.display = "initial"
+          } else {
+            document.getElementById("singledate").style.display = "initial"
+            document.getElementById("dateRange").style.display = "none"
+          }
+        }
+</script>
+</body>
+</html>
+
+
+
+
+

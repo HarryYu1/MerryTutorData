@@ -23,6 +23,9 @@ def create_app():
     from .attendance_module import attendance
     app.register_blueprint(attendance.attendancebp)
 
+    from .data_module import data
+    app.register_blueprint(data.databp)
+
 
 
     return app

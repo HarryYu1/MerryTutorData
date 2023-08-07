@@ -21,7 +21,7 @@ class AttendanceForm(FlaskForm):
     entries = FieldList(FormField(HourForm), min_entries=1)
     optional_comment = TextAreaField('Additional Comments:', render_kw={"rows": 5, "cols": 20})
     redirect_landing = SubmitField('Back')
-    submit = SubmitField('Save')
+    submit = SubmitField('Submit')
 
 
 
