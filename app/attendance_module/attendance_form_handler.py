@@ -41,3 +41,17 @@ def handle_attendance(name, date, entries):
 
     engine.dispose()
 
+def handle_comment(name, date, comment):
+
+    data = [[name.lower(), date, comment]]
+  
+# Create the pandas DataFrame
+    df = pandas.DataFrame(data, columns=['BoardMember', 'DateOfHours', 'Comment'])
+
+    print(df)
+
+    engine = sqlalchemy.create_engine(secretdata.url_object)
+
+    df.to_sql(name = "Attendance_Comments", con = engine, if_exists='append')
+
+    engine.dispose()
