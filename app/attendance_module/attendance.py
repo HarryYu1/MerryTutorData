@@ -2,7 +2,7 @@ from flask import Flask, render_template_string
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from flask_wtf import FlaskForm
 from wtforms import FieldList, FormField, StringField, SubmitField, SelectField, DateField, TextAreaField
-from wtforms.validators import InputRequired
+from wtforms.validators import InputRequired, Length
 import flask_login
 from . import attendance_form_handler
 
@@ -19,7 +19,7 @@ class AttendanceForm(FlaskForm):
     add_entry = SubmitField('Add Entry')
     delete_entry = SubmitField('Delete Entry')
     entries = FieldList(FormField(HourForm), min_entries=1)
-    optional_comment = TextAreaField('Additional Comments:', render_kw={"rows": 5, "cols": 20})
+    optional_comment = TextAreaField('Additional Comments:', render_kw={"rows": 5, "cols": 20}, validators=[Length(max=200)])
     redirect_landing = SubmitField('Back')
     submit = SubmitField('Submit')
 
@@ -36,7 +36,7 @@ def attendance():
         form.entries.pop_entry()
 
     elif form.redirect_landing.data:
-        return redirect("/landing_page")
+        return redirect("/landing_page") #janky, but redirects back first before any actual sql stuff happens
 
     elif form.validate_on_submit():
         #for entry in form.entries.data:
@@ -44,7 +44,7 @@ def attendance():
         attendance_form_handler.handle_attendance(name = form.name.data, date = form.date.data, entries = form.entries.data)  #add error handling with return value
         #    redirect to error page
         if form.optional_comment.data:
-            print(form.optional_comment.data) #TODO: add the same error handling as above.
+            attendance_form_handler.handle_comment(name = form.name.data, date = form.date.data, comment = form.optional_comment.data)
 
         return redirect('/landing_page')
 

@@ -4,6 +4,7 @@ from flask_wtf import FlaskForm
 from wtforms import FormField, StringField, SubmitField, SelectField, DateField, BooleanField
 from wtforms.validators import InputRequired
 import flask_login
+from . import handle_data
 
 databp = Blueprint('data', __name__)
 
@@ -29,7 +30,12 @@ def render_data_form():
 
     #TODO add a bunch of validation here
     if request.method == 'POST': 
-        print(form.table.data)
+        handle_data.handle_form(table = form.table.data, attendance_function=form.attendance_function.data,
+                                attendance_comments_function=form.attendance_comments_function.data, 
+                                sessions_function=form.sessions_function.data, 
+                                toggle_range=form.toggle_range.data, singledate=form.singledate.data, 
+                                startdate=form.start_date.data, enddate=form.end_date.data,
+                                tutor=form.tutor.data)
         return redirect('/landing_page')
 
     return render_template("dataform.html" ,form=form)
