@@ -1,0 +1,15 @@
+{
+  "name": "merrytutordata",
+  "version": "1.0.0",
+  "description": "The Merry Tutor Database",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch:scss": "node-sass -w app/static/static.scss app/static/static.css"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "jquery": "^3.7.0"
+  }
+}

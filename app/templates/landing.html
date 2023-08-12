@@ -3,75 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="../static/general.css"   rel="stylesheet" type="text/css"/>
-    <link href="http://fonts.googleapis.com/css?family=Corben:bold" rel="stylesheet" type="text/css">
-    <link href="http://fonts.googleapis.com/css?family=Nobile" rel="stylesheet" type="text/css">
+    <script src="../static/main.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
-    <script src="https://unpkg.com/typewriter-effect@latest/dist/core.js"></script>
+    <link href="../static/static.css"   rel="stylesheet" type="text/css"/>
     <title>Document</title>
 </head>
-<body style = "padding-bottom: 15%;background-color: #ffffff;
-background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge.png');
-  overflow-x: hidden;">
-   
-        <div class="row">
-          <div class="col-md-6 mx-auto col-md-6  box" style="padding-left: 0; padding-right: 0;padding: 0;" id="half-block">
-            
-            <div class="block" id="block1">
-              <a class="link" id = "Attendance-Link" style="text-decoration: none; color: black;">
-                <img style="padding-top: 12%;"    src="../static/clipboard-removebg-preview.png" class="landingImage"  id="checklist">
-                <h1 id="typewriter" style="text-decoration: none; color: black;">Attendance</h1>  
-              </a>
-               
-                
-                 
-               
-            </div>
-        
-          </div>
-        
-
+<body>
+    <nav class="navbar navbar-expand-lg navbar-* bg-* .sticky-top ms-auto">
       
-          <div class="col-md-6 mx-auto col-md-6" style="padding-left: 0; padding-right: 0; padding:0;" id= "half-block" class="block-right">
-            <div class="block" id="block2">
-              <a id="Analytics-Link">
-                <img style="padding-top: 12%;"  src = "../static/trend-removebg-preview.png" class ="landingImage" id="chart" \>
-                <h1>Analytics</h1>  
-              </a>  
-            </div>
-          
-
-
-           </div>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-right" href="login.html" style= "color: white; text-align: right;"> Logout<span class="sr-only"></span></a>
+            </li>
+            
+          </ul>
           
         </div>
+      </nav>
 
 
+    <div class="skewed-pages">
+        <div class="page1 page active">
+            <div class="page-left half-page">
+                <div class="page-block">
+                    <div class="page-content">
 
-    <script>
-      document.getElementById("Attendance-Link").addEventListener("click", redirect);
-      function redirect(){ window.location = "/attendance"; }
+                    </div>
+                </div>
+            </div>
+            <div class="page-right half-page">
+                <div class="page-block">
+                    <div class="page-content">
+                        <h1 class="page-heading">Attendance</h1>
+                        <p class="page-message">(scroll for more)</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page2 page">
+            <div class="page-left half-page">
+                <div class="page-block">
+                    <div class="page-content">
+                        <h1 class="page-heading">Analytics</h1>
+                        <p class="page-message">(scroll up to go back)</p>
+                    </div>
+                </div>
+            </div>
+            <div class="page-right half-page">
+                <div class = "page-block">
+                    <div class="page-content">
 
-      document.getElementById("Analytics-Link").addEventListener("click", redirect1);
-      function redirect1(){ window.location = "/data"; }
-
-
-      var i = 0;
-      var txt = ["Attendance"];
-      var pos = 0 ; 
-      var speed = 50;
-
-      typeWriter = () => {
-        document.querySelector("#typewriter").innerHTML = txt[0].substring(0,pos) + "<span>\u25ae</span>"
-
-        if(pos++ !=  txt[0].length){
-          setTimeout(typeWriter,speed);
-        }
+                    </div>
+                </div>
+            </div>
+        </div>
         
-      }
-      windows.addEventListener("load",typeWriter);
-    </script>
+    </div>
+
     
 </body>
 </html>
