@@ -16,6 +16,9 @@ class HourForm(FlaskForm):
 class AttendanceForm(FlaskForm):
     name = StringField('Overseer Name', validators=[InputRequired()])
     date = DateField('Date Of Session:', validators=[InputRequired()])
+    location = SelectField('Location:', choices = [('nichols', 'Nichols Library'), ('alive', 'Alive Center'), ('95', '95th Street Library'), ('other', 'Other')]
+                           , render_kw={'onchange': "changeTable()"})
+    other_location = StringField('Please Specify:')
     add_entry = SubmitField('Add Entry')
     delete_entry = SubmitField('Delete Entry')
     entries = FieldList(FormField(HourForm), min_entries=1)
@@ -41,10 +44,10 @@ def attendance():
     elif form.validate_on_submit():
         #for entry in form.entries.data:
         #    print(entry)
-        attendance_form_handler.handle_attendance(name = form.name.data, date = form.date.data, entries = form.entries.data)  #add error handling with return value
+        #attendance_form_handler.handle_attendance(name = form.name.data, date = form.date.data, entries = form.entries.data)  #add error handling with return value
         #    redirect to error page
-        if form.optional_comment.data:
-            attendance_form_handler.handle_comment(name = form.name.data, date = form.date.data, comment = form.optional_comment.data)
+        #if form.optional_comment.data:
+        #    attendance_form_handler.handle_comment(name = form.name.data, date = form.date.data, comment = form.optional_comment.data)
 
         return redirect('/landing_page')
 
