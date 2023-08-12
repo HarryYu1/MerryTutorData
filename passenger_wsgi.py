@@ -1,8 +1,8 @@
 from app import app as application
 
 import sys, os
-# INTERP = os.path.join(os.environ['HOME'], 'example.com', 'venv', 'bin', 'python3')
-INTERP = os.path.expanduser("~/venv/bin/python3")
+app_root_dir = os.path.dirname(os.path.realpath(__file__))
+INTERP = os.path.join(app_root_dir, 'venv/bin/python3.10')
 if sys.executable != INTERP:
     os.execl(INTERP, INTERP, *sys.argv)
 
