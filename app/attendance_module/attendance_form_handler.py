@@ -13,7 +13,7 @@ from .. import secretdata
     submit = SubmitField('Save')
 '''
 
-def handle_attendance(name, date, entries):
+def handle_attendance(name, date, entries, location):
     print(name, date, entries)
 
     df = pandas.DataFrame(entries) 
@@ -21,9 +21,11 @@ def handle_attendance(name, date, entries):
     df.drop('csrf_token', axis = 1, inplace = True)
     #remove case sensitivity for board member
     name = name.lower()
+    location = location.lower()
     #add the columns for name and date
     df['BoardMember'] = name
     df['DateOfHours'] = date
+    df['Location'] = location
 
     #PREPROCESS FOR SQL
     #rename for sql
@@ -41,12 +43,12 @@ def handle_attendance(name, date, entries):
 
     engine.dispose()
 
-def handle_comment(name, date, comment):
+def handle_comment(name, date, comment, location):
 
-    data = [[name.lower(), date, comment]]
+    data = [[name.lower(), date, comment, location]]
   
-# Create the pandas DataFrame
-    df = pandas.DataFrame(data, columns=['BoardMember', 'DateOfHours', 'Comment'])
+    # Create the pandas DataFrame
+    df = pandas.DataFrame(data, columns=['BoardMember', 'DateOfHours', 'Comment', 'Location'])
 
     print(df)
 

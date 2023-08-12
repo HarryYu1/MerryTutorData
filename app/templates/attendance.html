@@ -10,7 +10,7 @@
 background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge.png');
   overflow-x: hidden;">
     <div id="display_contents">
-    <form action="" method="post" role="form" id="form_attendance" style="padding: 15%;">
+    <form action="" method="post" role="form" id="form_attendance" style="padding: 10%;">
         <div>
         {{ form.hidden_tag() }}
         <br>
@@ -21,6 +21,14 @@ background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge
         <br>
         
         {{ form.date.label }} {{ form.date() }}
+        <br>
+
+        <br>
+        {{ form.location.label }} {{ form.location() }}
+            <div id = "specific_location" style = "display: none">
+            <br> {{ form.other_location.label() }} {{ form.other_location() }}
+            </div>
+
         </div>
   
 
@@ -44,5 +52,15 @@ background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge
         {{ form.submit() }}
         <input type = "submit" name = "redirect_landing" value = "Back" id = "redirect_landing">
     </div>
+    <script>
+        function changeTable() {
+            let table_value = document.getElementById("location").value;
+            if (table_value === "other") {
+                document.getElementById("specific_location").style.display = "initial"
+            } else {
+                document.getElementById("specific_location").style.display = "none"
+            }
+    }
+    </script>
 </body>
 </html>
