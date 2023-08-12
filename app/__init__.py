@@ -31,11 +31,5 @@ def create_app():
 
     return app
 
-def test_app():
-    app = Flask(__name__)
-    @app.route("/", methods = ["GET", "POST"])
-    def redirect_login():
-        return "Test Successful"
 
-#app = create_app()
-app = test_app()
+app = create_app()
