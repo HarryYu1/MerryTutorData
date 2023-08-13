@@ -37,6 +37,16 @@ body {
 #page-button:hover {
   opacity: 1; }
 
+#logout-button {
+  border-radius: 3rem;
+  height: 100%;
+  width: 100%;
+  opacity: .2;
+  transition: ease 1000ms; }
+
+#logout-button:hover {
+  opacity: 1; }
+
 .page {
   position: absolute;
   left: 0;
