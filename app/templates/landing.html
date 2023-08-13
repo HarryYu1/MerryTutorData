@@ -8,15 +8,15 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
     <link href="../static/static.css"   rel="stylesheet" type="text/css"/>
-    <title>Document</title>
+    <title>Landing Page</title>
 </head>
-<body>
+<body style="overflow: hidden;">
     <nav class="navbar navbar-expand-lg navbar-* bg-* .sticky-top ms-auto">
       
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent" style="padding-right: 5vh; font-size: larger;">
           <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-              <a class="nav-link text-right" href="login.html" style= "color: white; text-align: right;"> Logout<span class="sr-only"></span></a>
+            <li class="nav-item active" style="text-align: end;">
+              <a class="nav-link text-right" id="nav-logout" style= "color: white; text-align: right;"> Logout<span class="sr-only"></span></a>
             </li>
             
           </ul>
@@ -25,7 +25,7 @@
       </nav>
 
 
-<div class="skewed-pages">
+<div class="skewed-pages" style="overflow: hidden;">
    
         <div class="page1 page active">
             <div class="page-left half-page">
@@ -36,25 +36,25 @@
                     </div>
             </div>
             <div class="page-right half-page">
-                <a class="link" id = "Attendance-Link" style="text-decoration: none;">
-                    <div class="page-block">
-                        
-                        <div class="page-content">
+                    <a class="link" id = "attendance-link">
+                        <div class="page-block">
                             
-                             <h1 class="page-heading">Attendance</h1>
-                        
-                             <p class="page-message">(scroll for more)</p>
-                        
-                     </div>
-                </a>
-                    
+                            <div class="page-content">
+                                
+                                <h1 class="page-heading">Attendance</h1>
+                            
+                                <p class="page-message">(scroll for more)</p>
+                            
+                            </div>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
     
         <div class="page2 page">
             <div class="page-left half-page">
-           
+                <a class="link" id = "Analytics-Link">
                     <div class="page-block">
                         <div class="page-content">
                             <h1 class="page-heading">Analytics</h1>
@@ -62,6 +62,7 @@
                         </div>
          
                 </div>
+                </a>
             </div>
             <div class="page-right half-page">
                 <div class = "page-block">
@@ -75,13 +76,17 @@
     </div>
 <script>
 
-    document.getElementById("Attendance-Link").addEventListener("click", redirect);
+    document.getElementById("attendance-link").addEventListener("click", redirect);
 
     function redirect(){ window.location = "/attendance"; }
 
-   // document.getElementById("Analytics-Link").addEventListener("click", redirect1);
+    //document.getElementById("Analytics-Link").addEventListener("click", redirect1);
     
-    //function redirect1(){ window.location = "/data"; }
+   // function redirect1(){ window.location = "/data"; }
+
+    document.getElementById("nav-logout").addEventListener("click", redirect2);
+    
+    function redirect2(){ window.location = "/logout"; }
 
 </script>
     
