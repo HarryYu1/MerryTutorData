@@ -27,6 +27,9 @@ def handle_attendance(name, date, entries, location):
     df['DateOfHours'] = date
     df['Location'] = location
 
+    #convert hours to float fr
+    df['hours'] = pandas.to_numeric(df['hours'])
+
     #PREPROCESS FOR SQL
     #rename for sql
     df.rename(columns = {'tutorname':'Tutor', 'hours': 'Hours'}, inplace = True)
