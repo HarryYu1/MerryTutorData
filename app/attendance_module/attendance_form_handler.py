@@ -39,13 +39,13 @@ def handle_attendance(name, date, entries, location):
     #now we do the sql (skull emoji)
     engine = sqlalchemy.create_engine(secretdata.url_object)
 
-    df.to_sql(name = "Attendance", con = engine, if_exists='append')
+    df.to_sql(name = "Attendance", con = engine, if_exists='append', index = False)
 
     engine.dispose()
 
 def handle_comment(name, date, comment, location):
 
-    data = [[name.lower(), date, comment, location]]
+    data = [[name.lower(), date, comment, location.lower()]]
   
     # Create the pandas DataFrame
     df = pandas.DataFrame(data, columns=['BoardMember', 'DateOfHours', 'Comment', 'Location'])
@@ -54,6 +54,6 @@ def handle_comment(name, date, comment, location):
 
     engine = sqlalchemy.create_engine(secretdata.url_object)
 
-    df.to_sql(name = "Attendance_Comments", con = engine, if_exists='append')
+    df.to_sql(name = "Attendance_Comments", con = engine, if_exists='append', index = False)
 
     engine.dispose()

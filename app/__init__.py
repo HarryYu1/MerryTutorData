@@ -3,6 +3,7 @@ import flask
 from . import secretdata
 import flask_login
 
+
 def create_app():
 
     app = Flask(__name__)
@@ -29,3 +30,4 @@ def create_app():
 
 
     return app
+
