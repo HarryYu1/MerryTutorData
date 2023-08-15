@@ -3,6 +3,7 @@ from flask_wtf import FlaskForm
 from wtforms import FieldList, FormField, StringField, SubmitField, SelectField, DateField, TextAreaField, SelectMultipleField, widgets
 from wtforms.validators import InputRequired, Length
 import flask_login #TODO implement tiered login system
+from . import smtp
 
 sessionbp = Blueprint('session', __name__)
 
@@ -32,14 +33,18 @@ class SessionForm(FlaskForm):
     #the big entries
     summary = TextAreaField("What did you work on? What did the student do well? What did the student have trouble with?", 
                             validators=[InputRequired()], 
-                            render_kw={"rows": 5, "cols": 20})
+                            render_kw={"rows": 5, "cols": 60})
     suggestions = TextAreaField("What are some suggested steps until the next tutoring session? Any suggested homework?", 
                             validators=[InputRequired()], 
-                            render_kw={"rows": 5, "cols": 20})
+                            render_kw={"rows": 5, "cols": 60})
     submit = SubmitField("Submit")
 
 
 @sessionbp.route('/session_summary', methods=['GET', 'POST'])
 def render_session_form():
     form = SessionForm()
+    if form.submit.data and form.validate_on_submit():
+        print('submitted with button')
+        smtp.sendemail(tutorname = form.tutor.data, tuteename=form.tutee.data, summary = form.summary.data, suggestions = form.suggestions.data, email = form.parentemail.data)
+        return redirect('/login')
     return render_template('session_form.html', form = form)
