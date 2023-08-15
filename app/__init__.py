@@ -27,7 +27,8 @@ def create_app():
     from .data_module import data
     app.register_blueprint(data.databp)
 
-
+    from .session_summary_module import session_summary
+    app.register_blueprint(session_summary.sessionbp)
 
     return app
 

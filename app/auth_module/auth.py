@@ -43,11 +43,13 @@ def login():
         return render_template("login.html")
     
     username = flask.request.form["username"]
-    if username in secretdata.users and flask.request.form['password'] == secretdata.users[username]['password']:
+    if username in secretdata.admins and flask.request.form['password'] == secretdata.admins[username]['password']:  #admin login
         user = User()
         user.id = username
-        flask_login.login_user(user)
-        return flask.redirect('/landing_page') 
+        flask_login.login_user(user)  #login admin user TODO
+        return flask.redirect('/landing_page')   
+    elif username in secretdata.users and flask.request.form['password'] == secretdata.users[username]['password']:
+        return flask.redirect('/session_summary')  #login normal user TODO
     
     return flask.redirect('/login')
 

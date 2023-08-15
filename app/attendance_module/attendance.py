@@ -10,11 +10,11 @@ attendancebp = Blueprint('attendance', __name__)
 
 #single attendance entry
 class HourForm(FlaskForm):
-    tutorname = StringField('Name')
+    tutorname = StringField('Name (First Last)')
     hours = SelectField('Hours', choices = [(0, 0), (0.5, 0.5), (1, 1), (1.5, 1.5), (2, 2)])  #value label pairs
 
 class AttendanceForm(FlaskForm):
-    name = StringField('Overseer Name', validators=[InputRequired()])
+    name = StringField('Overseer Name (First Last)', validators=[InputRequired()])
     date = DateField('Date Of Session:', validators=[InputRequired()])
     location = SelectField('Location:', choices = [('nichols', 'Nichols Library'), ('alive', 'Alive Center'), ('95', '95th Street Library'), ('other', 'Other')]
                            , render_kw={'onchange': "changeTable()"})

@@ -10,49 +10,57 @@
 background-image: url('https://www.transparenttextures.com/patterns/bedge-grunge.png');
   overflow-x: hidden;">
     <div id="display_contents">
-    <form action="" method="post" role="form" id="form_attendance" style="padding: 10%;">
+    <form action="" method="post" role="form" id="form_session" style="padding: 10%;">
         <div>
         {{ form.hidden_tag() }}
         <br>
         <br>
-        {{ form.name.label }} {{ form.name() }}
+        {{ form.tutor.label }} {{ form.tutor() }}
+        <br>
+        {{ form.shadowingtutor.label }} {{ form.shadowingtutor() }}
         <br>
 
         <br>
-        
         {{ form.date.label }} {{ form.date() }}
+        <br>
+
+        <br>
+        {{ form.tutee.label }} {{ form.tutee() }}
+        <br>
+        {{ form.tuteegrade.label }} {{ form.tuteegrade() }}
+        <br>
+        {{ form.parentemail.label }} {{ form.parentemail() }}
         <br>
 
         <br>
         {{ form.location.label }} {{ form.location() }}
             <div id = "specific_location" style = "display: none">
-            <br> {{ form.other_location.label() }} {{ form.other_location() }}
+                {{ form.other_location.label() }} {{ form.other_location() }} <br>
             </div>
 
         </div>
-  
-
-        <br>
-         <input type="submit" name="add_entry" value="Add Entry" id = "add_entry">
-        <input type="submit" name="delete_entry" value="Delete Entry" id = "delete_entry">
-        <br>
         
         <br>
-        {% for entry in form.entries %}
-            <p style="width: 600px;">
-            {{ entry.tutorname.label }} {{ entry.tutorname() }}
-            {{ entry.hours.label }} {{ entry.hours() }}
-            {{ entry.hidden_tag() }}
-            </p>
-            <br>
+        {{ form.sessionlength.label }} {{ form.sessionlength() }}
+        <br>
+        {{ form.subject.label }} {{ form.subject() }}
+        <br>
+        {{ form.other_subject.label }} {{ form.other_subject() }}
+        <br>
+        <br>
+        {{ form.summary.label }} <br> 
+        {{ form.summary() }}
+        <br>
+        <br>
+        {{ form.suggestions.label }} <br> 
+        {{ form.suggestions() }} <br>
+
          
-        {% endfor %}
-        {{ form.optional_comment.label }} <br>
-        {{ form.optional_comment() }} <br>
+
         {{ form.submit() }}
         <br>
         <br>
-        <input type = "submit" name = "redirect_landing" value = "Back" id = "redirect_landing">
+    
     </div>
     <script>
         function changeTable() {
