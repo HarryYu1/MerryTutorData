@@ -54,11 +54,11 @@ The Merry Tutor
 '''
 
     msg.attach(MIMEText(msgoutro))
-    
+
     imgtext = MIMEText('<img src="cid:image1" style="width:125px;height:125px;">', 'html')
     msg.attach(imgtext)
 
-    image = MIMEImage(open('app/static/RoundLogo.png', 'rb').read())
+    image = MIMEImage(open('/home/MerryData/MerryTutorData/app/static/RoundLogo.png', 'rb').read())
 
     msg.attach(MIMEText('\nInstagram: https://www.instagram.com/themerrytutor/?hl=en' + 
                         '\nTwitter: https://twitter.com/themerrytutor' + 
