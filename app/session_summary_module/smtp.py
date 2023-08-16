@@ -5,7 +5,7 @@ from email.mime.multipart import MIMEMultipart
 import smtplib
 
 
-def sendemail(tutorname, tuteename, summary, suggestions, email):
+def sendemail(tutorname, tuteename, summary, suggestions, email, subjects, other_subjects):
     smtp = smtplib.SMTP('smtp.gmail.com', 587) #connect to the gmail smtp server
     smtp.ehlo()  #initiate the connection with extended hello
     smtp.starttls() #begin encryption for message transfer
@@ -31,6 +31,11 @@ We would appreciate your feedback on this brief Session Feedback Survey so we ca
     #spacer
     msg.attach(MIMEText('\n\n============================================================================================\n\n'))
 
+    list_of_subjects = subjects
+    #if other_subjects:  I don't think you actually need this because list of subjects is a reference, gets appended in the other file?
+    #    list_of_subjects.append(other_subjects)
+    msg.attach(MIMEText('Subjects: ' + ' '.join(list_of_subjects) + '\n\n') )
+
     #tutorname
     msg.attach(MIMEText('Tutor Name: ' + tutorname.title() + '\n\n'))
     #the summary
@@ -48,6 +53,8 @@ The Merry Tutor
 
 '''
 
+    msg.attach(MIMEText(msgoutro))
+    
     imgtext = MIMEText('<img src="cid:image1" style="width:125px;height:125px;">', 'html')
     msg.attach(imgtext)
 
@@ -66,3 +73,5 @@ The Merry Tutor
                 to_addrs=to, msg=msg.as_string())
 
     smtp.quit() #terminate connection
+
+    print('Email Sent')

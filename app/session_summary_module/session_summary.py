@@ -4,6 +4,7 @@ from wtforms import FieldList, FormField, StringField, SubmitField, SelectField,
 from wtforms.validators import InputRequired, Length
 import flask_login #TODO implement tiered login system
 from . import smtp
+from . import session_summary_handler
 
 sessionbp = Blueprint('session', __name__)
 
@@ -45,6 +46,7 @@ def render_session_form():
     form = SessionForm()
     if form.submit.data and form.validate_on_submit():
         print('submitted with button')
-        smtp.sendemail(tutorname = form.tutor.data, tuteename=form.tutee.data, summary = form.summary.data, suggestions = form.suggestions.data, email = form.parentemail.data)
+        session_summary_handler.handle_form(form)
+        smtp.sendemail(subjects = form.subject.data, other_subjects = form.other_subject.data, tutorname = form.tutor.data, tuteename=form.tutee.data, summary = form.summary.data, suggestions = form.suggestions.data, email = form.parentemail.data)
         return redirect('/login')
     return render_template('session_form.html', form = form)
