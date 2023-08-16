@@ -28,6 +28,7 @@ def user_loader(name):
 
 @login_manager.request_loader
 def request_loader(request):
+    print(request)
     name = request.form.get('Username')
     if name not in secretdata.users:
         return
@@ -43,13 +44,11 @@ def login():
         return render_template("login.html")
     
     username = flask.request.form["username"]
-    if username in secretdata.admins and flask.request.form['password'] == secretdata.admins[username]['password']:  #admin login
+    if username in secretdata.users and flask.request.form['password'] == secretdata.users[username]['password']:
         user = User()
         user.id = username
-        flask_login.login_user(user)  #login admin user TODO
-        return flask.redirect('/landing_page')   
-    elif username in secretdata.users and flask.request.form['password'] == secretdata.users[username]['password']:
-        return flask.redirect('/session_summary')  #login normal user TODO
+        flask_login.login_user(user)
+        return flask.redirect('/landing_page') 
     
     return flask.redirect('/login')
 
