@@ -113,3 +113,13 @@ h1{
   background-color: black;
   background-image: url('../static/zaini-izzuddin-55btQzyDiO8-unsplash.jpg');
 }
+
+.box-confirm{
+  text-align: center;
+  width: 50%;
+  height: 60vh;
+  border: 7px solid gray;
+  border-style: groove;
+
+
+}

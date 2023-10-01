@@ -1,7 +1,7 @@
 from flask import Blueprint, flash, g, redirect, render_template, request, session, url_for
 from flask_wtf import FlaskForm
 from wtforms import FieldList, FormField, StringField, SubmitField, SelectField, DateField, TextAreaField, SelectMultipleField, widgets
-from wtforms.validators import InputRequired, Length
+from wtforms.validators import InputRequired, Length, NumberRange
 import flask_login #TODO implement tiered login system
 from . import smtp
 from . import session_summary_handler
@@ -48,5 +48,5 @@ def render_session_form():
         print('submitted with button')
         session_summary_handler.handle_form(form)
         smtp.sendemail(subjects = form.subject.data, other_subjects = form.other_subject.data, tutorname = form.tutor.data, tuteename=form.tutee.data, summary = form.summary.data, suggestions = form.suggestions.data, email = form.parentemail.data)
-        return redirect('/login')
+        return render_template('confirmation.html')
     return render_template('session_form.html', form = form)
