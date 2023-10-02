@@ -30,5 +30,8 @@ def create_app():
     from .session_summary_module import session_summary
     app.register_blueprint(session_summary.sessionbp)
 
+    from .tutor_module import stats
+    app.register_blueprint(stats.statsbp)
+
     return app
 
