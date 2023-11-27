@@ -26,26 +26,44 @@ body {
 
 #page-button {
   display: inline-block;
-  width: 80%;
-  opacity: .20;
+  width: 70%;
+  background: none;
   height: 10%;
   padding: 0;
-  border-radius: 2rem;
-  background-color: white;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white !important;
+  border-color: white;
+  background-color: none;
   transition: ease 1000ms; }
 
 #page-button:hover {
-  opacity: 1; }
+
+  transform: scale(1.1);
+  opacity: 1; 
+  
+}
 
 #logout-button {
-  border-radius: 3rem;
-  height: 100%;
+  display: inline-block;
   width: 100%;
-  opacity: .2;
-  transition: ease 1000ms; }
+  background: none;
+  height: 100%;
+  padding: 0;
+  border: none;
+  border-bottom: 2px solid white;
+  color: white !important;
+  border-color: white;
+  background-color: none;
+  transition: ease 1000ms; 
+  text-transform: uppercase;
+}
 
 #logout-button:hover {
-  opacity: 1; }
+  transform: scale(1.1);
+  opacity: 1; 
+  
+}
 
 .page {
   position: absolute;
