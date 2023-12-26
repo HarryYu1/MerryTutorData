@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+Attendance:
+{% for table in attendanceTable %}
+            {{ table|safe }}
+{% endfor %}
+<br>
+<br>
+Sessions:
+{% for table in sessionsTable %}
+            {{ table|safe }}
+{% endfor %}
+
+</body>
+</html>

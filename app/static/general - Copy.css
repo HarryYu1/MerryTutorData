@@ -1,0 +1,125 @@
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Corben', Georgia, Times, serif;
+}
+p, div {
+  font-family: 'Nobile', Helvetica, Arial, sans-serif;
+}
+
+
+.btn-color{
+    background-color: #0e1c36;
+    color: #fff;
+    
+  }
+  
+  .profile-image-pic{
+    height: 200px;
+    width: 200px;
+    object-fit: cover;
+  }
+  
+  
+  
+  .cardbody-color{
+    background-color: #eeeade;
+  }
+  
+  a{
+    text-decoration: none;
+
+  }
+
+
+  .block{
+  
+    width: 100% ;
+    height: 800px;
+  
+    background-color: whitesmoke;
+    border: 2px 2px 2px 2px rounded black;
+    
+    text-decoration: none;
+
+  }
+  
+
+  #half-block{
+    padding-top:5%;
+    text-align: center;
+    float: none;
+
+    
+  }
+  
+  #block1{
+    background-image: url('../static/zaini-izzuddin-55btQzyDiO8-unsplash.jpg');
+    background-position: center;
+    padding-top:5%;
+    text-align: center;
+    float: none;
+    transition: ease-in-out 1000ms;
+    
+  }
+  
+  #block1:hover{
+    display: inline-block;
+    transition: ease-in-out 1000ms;
+    background-image: url('../static/unplash-bookshelf-editeed.png');
+    background-size: cover;
+  }
+ 
+  
+  .landingImage{
+    height: 400px;
+    width: 400px;
+    
+  }
+
+  .block-left {
+    padding: 0;
+   
+    text-decoration: none;
+    
+  }
+
+  
+.row{
+  padding: 0%;
+}
+.link{
+  display:inline-block;
+  width:100%;
+  height:100%;
+}
+
+img{
+  padding-top: 6%;
+
+
+}
+
+h1{
+  padding-top: 8%;
+}
+
+#display_contents{
+  display: flex;
+  justify-content: center;
+  height: 200px;
+}
+
+.box{
+  background-color: black;
+  background-image: url('../static/zaini-izzuddin-55btQzyDiO8-unsplash.jpg');
+}
+
+.box-confirm{
+  text-align: center;
+  width: 50%;
+  height: 60vh;
+  border: 7px solid gray;
+  border-style: groove;
+
+
+}

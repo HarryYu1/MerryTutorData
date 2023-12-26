@@ -2,6 +2,8 @@ from flask import Flask
 import flask
 from . import secretdata
 import flask_login
+from flask import session
+
 
 
 def create_app():
@@ -30,11 +32,15 @@ def create_app():
     from .session_summary_module import session_summary
     app.register_blueprint(session_summary.sessionbp)
 
+    from .tutor_module import stats
+    app.register_blueprint(stats.statsbp)
+
     #hooray error handler
     @app.errorhandler(500)
     def internal_error(error):
 
         return str(error) #replace with a good page later
+
 
     return app
 

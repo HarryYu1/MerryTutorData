@@ -1,7 +1,8 @@
 import flask
-from flask import Blueprint, render_template
+from flask import Blueprint, render_template, session, redirect
 import flask_login
 from .. import secretdata
+import sqlalchemy
 
 authbp = Blueprint('auth', __name__)
 
@@ -44,13 +45,39 @@ def login():
         return render_template("login.html")
     
     username = flask.request.form["username"]
-    if username in secretdata.users and flask.request.form['password'] == secretdata.users[username]['password']:
+    if username in secretdata.users and flask.request.form['password'] == secretdata.users[username]['password']:  #admin
         user = User()
         user.id = username
         flask_login.login_user(user)
         return flask.redirect('/landing_page') 
+    else:    #tutor login
+       name = validateTutorLogin(username, flask.request.form['password'])
+       if len(name) != 0: #if exists
+        session['username_data'] = str(name[0][0]) #unpack the name, also its a key now (see stats.py for jank details)
+        return flask.redirect('/tutor/%s' % username)
+       print('invalid login.')
+       return flask.redirect('/login')
+
     
-    return flask.redirect('/login')
+
+ 
+def validateTutorLogin(user, password):   #check if username and associated password exists
+    engine = sqlalchemy.create_engine(secretdata.url_object)
+
+    with engine.connect() as connection:
+        sql = sqlalchemy.text("select Name from Accounts where Username = \'" + user + "\' and Password = \'" + password + "\'")
+
+        result = connection.execute(sql)
+
+        connection.close()
+
+        engine.dispose()
+        
+        return result.fetchall()
+    
+
+
+
 
 
 @authbp.route('/logout')
