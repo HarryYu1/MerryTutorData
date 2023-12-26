@@ -65,9 +65,9 @@ def validateTutorLogin(user, password):   #check if username and associated pass
     engine = sqlalchemy.create_engine(secretdata.url_object)
 
     with engine.connect() as connection:
-        sql = sqlalchemy.text("select Name from Accounts where Username = \'" + user + "\' and Password = \'" + password + "\'")
+        sql = sqlalchemy.text("select Name from Accounts where Username = :username and Password = :passw") #paramaterize to avoid injection
 
-        result = connection.execute(sql)
+        result = connection.execute(sql, {"username" : user, "passw" : password}) #must pass a dict now???
 
         connection.close()
 
